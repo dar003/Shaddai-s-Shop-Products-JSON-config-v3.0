@@ -63,7 +63,7 @@
 </table>
 
 
-### 🌐 Shaddai's Shop · [▶ Probar la demo en vivo](https://dar003.github.io/Shaddai-s-Shop-Products-JSON-config-v3.0/)
+### 🌐 Shaddai's Shop Products JSON config — GitHub Pages v3.0 · [▶ Probar la demo en vivo](https://dar003.github.io/Shaddai-s-Shop-Products-JSON-config-v3.0/)
 
 Una experiencia de compra ligera y optimizada para dispositivos móviles.
 
@@ -239,7 +239,7 @@ El checkout transforma el contenido del carrito en un mensaje estructurado para 
 
 ## 🌐 Demo
 
-### ▶ Probar Shaddai's Shop
+### ▶ Probar Shaddai's Shop Products JSON config — GitHub Pages v3.0
 
 **[Abrir la aplicación en GitHub Pages](https://dar003.github.io/Shaddai-s-Shop-Products-JSON-config-v3.0/)**
 
@@ -291,13 +291,13 @@ Esto permite abrir el proyecto directamente en un navegador o publicarlo mediant
 Clona el repositorio:
 
 ```bash
-git clone .git
+git clone https://github.com/dar003/Shaddai-s-Shop-Products-JSON-config-v3.0.git
 ```
 
 Entra en el proyecto:
 
 ```bash
-cd Shaddai-s-Shop-Prototipo-de-Ventas
+cd Shaddai-s-Shop-Products-JSON-config-GitHub-Pages-v3.0
 ```
 
 Después abre:
@@ -331,7 +331,7 @@ http://localhost:8000
 Actualmente el repositorio mantiene una estructura minimalista:
 
 ```text
-Shaddai-s-Shop-Prototipo-de-Ventas/
+Shaddai-s-Shop-Products-JSON-config-GitHub-Pages-v3.0
 │
 ├── index.html
 └── README.md
@@ -344,7 +344,7 @@ La simplicidad es intencional: el proyecto se encuentra actualmente en una etapa
 A medida que el proyecto crezca, la estructura puede evolucionar hacia:
 
 ```text
-Shaddai-s-Shop-Prototipo-de-Ventas/
+Shaddai-s-Shop-Products-JSON-config-GitHub-Pages-v3.0
 │
 ├── index.html
 ├── README.md
@@ -356,11 +356,13 @@ Shaddai-s-Shop-Prototipo-de-Ventas/
 ├── css/
 │   └── styles.css
 │
-└── js/
-    ├── app.js
-    ├── cart.js
-    ├── filters.js
-    └── currency.js
+├── js/
+│   ├── app.js
+│   ├── config.js
+│   
+│
+└── docs/
+     └── README.md
 ```
 
 La separación de archivos se realizaría únicamente cuando aporte una ventaja real al mantenimiento del proyecto.
@@ -557,11 +559,11 @@ Proyecto desarrollado como prototipo de una solución de comercio web orientada 
 
 ### 🔗 Proyecto
 
-**[Shaddai's Shop — GitHub](https://github.com/dar003/Shaddai-s-Shop-Prototipo-de-Ventas)**
+**[Shaddai's Shop — GitHub](https://dar003.github.io/Shaddai-s-Shop-Products-JSON-config-v3.0)**
 
 ### 🌐 Demo
 
-**[Abrir Shaddai's Shop](https://dar003.github.io/Shaddai-s-Shop-Prototipo-de-Ventas/)**
+**[Abrir Shaddai's Shop](https://dar003.github.io/Shaddai-s-Shop-Products-JSON-config-v3.0/)**
 
 ---
 
@@ -573,6 +575,6 @@ Actualmente el repositorio no especifica una licencia de software.
 ---
 
 <p align="center">
-&#x20; <strong>🛍️ Shaddai's Shop</strong><br>
+&#x20; <strong>🛍️ Shaddai's Shop v3.0</strong><br>
 &#x20; Tienda web · Mobile-first · USD / VES · WhatsApp
 </p>
