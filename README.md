@@ -356,10 +356,12 @@ Shaddai-s-Shop-Products-JSON-config-GitHub-Pages-v3.0
 ├── css/
 │   └── styles.css
 │
+├── data/
+│   └── products.json
+│  
 ├── js/
 │   ├── app.js
-│   ├── config.js
-│   
+│   └── config.js
 │
 └── docs/
      └── README.md
