@@ -1,6 +1,6 @@
-# 🛍️ Shaddai's Shop
+# 🛍️ Shaddai's Shop Products JSON config — GitHub Pages v3.0
 
-> Prototipo de tienda web **mobile-first** para pequeños comercios y emprendimientos, diseñado para consultar productos, filtrar el catálogo, gestionar un carrito de compras y preparar pedidos mediante pagos rápidos efectuados de inmediato vía WhatsApp.
+> Prototipo de Tienda estática con versión web **mobile-first** para GitHub Pages con catálogo de productos para pequeños comercios, además cuenta con un administrador integrado para consultar, agregar productos, filtrar, editar el catálogo, gestionar carrito de compras y preparar pedidos mediante pagos rápidos efectuados de inmediato vía WhatsApp. Los cambios del administrador se publican directamente en el repositorio mediante la API de GitHub. 
 
 
 <p align="center">
