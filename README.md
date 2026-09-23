@@ -1,4 +1,4 @@
-# Shaddai's Shop — GitHub Pages
+# Shaddai's Shop Products JSON config — GitHub Pages v3.0
 
 Tienda estática para GitHub Pages con catálogo en `data/productos.json` y un administrador integrado para **agregar, editar y eliminar productos**. Los cambios del administrador se publican directamente en el repositorio mediante la API de GitHub.
 
