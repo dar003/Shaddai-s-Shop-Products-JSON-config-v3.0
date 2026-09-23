@@ -63,7 +63,7 @@
 </table>
 
 
-### 🌐 Shaddai's Shop · [▶ Probar la demo en vivo](https://dar003.github.io/Shaddai-s-Shop-Prototipo-de-Ventas/)
+### 🌐 Shaddai's Shop · [▶ Probar la demo en vivo](https://dar003.github.io/Shaddai-s-Shop-Products-JSON-config-v3.0/)
 
 Una experiencia de compra ligera y optimizada para dispositivos móviles.
 
@@ -241,7 +241,7 @@ El checkout transforma el contenido del carrito en un mensaje estructurado para 
 
 ### ▶ Probar Shaddai's Shop
 
-**[Abrir la aplicación en GitHub Pages](https://dar003.github.io/Shaddai-s-Shop-Prototipo-de-Ventas/)**
+**[Abrir la aplicación en GitHub Pages](https://dar003.github.io/Shaddai-s-Shop-Products-JSON-config-v3.0/)**
 
 La demo funciona directamente desde el navegador y permite interactuar con el catálogo, filtros, carrito, lista de precios y conversión USD/VES.
 
@@ -291,7 +291,7 @@ Esto permite abrir el proyecto directamente en un navegador o publicarlo mediant
 Clona el repositorio:
 
 ```bash
-git clone https://github.com/dar003/Shaddai-s-Shop-Prototipo-de-Ventas.git
+git clone .git
 ```
 
 Entra en el proyecto:
