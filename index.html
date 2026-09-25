@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#006B4D">
+  <title>Shaddai's Shop</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<header class="header">
+  <div class="header-left">
+    <button class="menu-btn" id="menuToggle" aria-label="Abrir menú">☰</button>
+    <span class="header-title" id="headerTitle">🛍️ Shaddai's Shop</span>
+    <div class="header-search" id="headerSearch"><input type="text" id="headerSearchInput" placeholder="Buscar productos..."><button class="close-search" id="closeHeaderSearch">✕</button></div>
+  </div>
+  <div class="header-right">
+    <button class="search-toggle" id="searchToggle" aria-label="Buscar">🔍</button>
+    <button class="cart-toggle" id="cartToggle" aria-label="Carrito">🛒<span class="cart-badge-float" id="cartBadgeFloat">0</span></button>
+  </div>
+</header>
+<section class="top-carousel-section" id="topCarouselSection">
+  <div class="top-carousel-title">🔥 MÁS PEDIDOS</div>
+  <div class="carousel-wrapper"><div class="carousel-track" id="carouselTrack"></div></div>
+</section>
+<div class="overlay" id="overlay"></div>
+<aside class="sidebar" id="sidebar">
+  <button class="sidebar-close" id="sidebarClose">✕</button>
+  <div class="sidebar-section">
+    <div class="rate-section">
+      <div class="rate-title">💱 Tasa del día</div>
+      <div class="rate-edit-row"><input type="number" id="sidebarRateInput" min="0.0001" step="0.01" inputmode="decimal" aria-label="Tasa del día"><button class="rate-save-btn" id="sidebarRateSave">Guardar</button></div>
+      <div class="rate-display" id="sidebarRateDisplay">1 USD = 293.00 VES</div>
+    </div>
+  </div>
+  <div class="sidebar-section"><h3>Buscar</h3><input type="text" class="search-input" id="searchInput" placeholder="Buscar productos..."></div>
+  <div class="sidebar-section">
+    <h3>🛒 Carrito</h3><ul class="cart-list" id="cartList"><li class="cart-empty">No hay productos en el carrito.</li></ul>
+    <div class="cart-total" id="cartTotal">Total: $0.00</div>
+    <button class="price-list-btn" id="priceListBtn">📋 Ver lista de precios</button>
+    <button class="add-product-side-btn" id="addProductBtn"><span class="plus">+</span><span>Agregar producto</span></button>
+    <button class="download-json-side-btn" id="downloadJsonBtn">⇩ Exportar productos.json</button>
+  </div>
+  <div class="sidebar-section"><h3>Categorías</h3><div class="category-list" id="categoryList"></div></div>
+  <div class="sidebar-section">
+    <h3>Filtro por precio</h3>
+    <div class="price-slider-container"><input type="range" id="priceSlider" min="0" max="100" step="0.5" value="100"><div class="price-display">Precio máximo: $<span id="priceDisplay">100</span></div></div>
+    <div class="filter-toggle-wrap"><button class="filter-toggle-btn" id="filterToggleBtn">Filtrar +</button></div>
+    <div class="filter-options" id="filterOptions">
+      <div class="filter-option" data-sort="price-asc"><span class="option-icon">📈</span> Menor a mayor precio</div>
+      <div class="filter-option" data-sort="price-desc"><span class="option-icon">📉</span> Mayor a menor precio</div>
+      <div class="filter-option" data-sort="best-offers"><span class="option-icon">⭐</span> Mejores ofertas</div>
+      <div class="filter-label">🔢 Filtrar por gramos</div><div class="filter-units-group" id="filterUnitsGroup"></div>
+    </div>
+  </div>
+  <div class="sidebar-section"><h3>Etiquetas</h3><div class="tag-list" id="tagList"></div></div>
+</aside>
+<div class="cart-overlay" id="cartOverlay"></div>
+<aside class="cart-panel" id="cartPanel">
+  <div class="cart-panel-header"><h2>🛒 Carrito</h2><button class="cart-panel-close" id="cartPanelClose">✕</button></div>
+  <ul class="cart-items-list" id="cartItemsList"><li class="empty-cart-msg">No hay productos en el carrito.</li></ul>
+  <div class="cart-panel-total" id="cartPanelTotal">Total: $0.00</div><button class="checkout-btn" id="checkoutBtn">Proceder al pago</button>
+</aside>
+<main class="main-content">
+  <div class="products-grid" id="productsGrid"></div>
+  <div class="price-list-container" id="priceListContainer"></div>
+  <section class="manager-view" id="managerView">
+    <div class="manager-header">
+      <div><h2>⚙️ Gestión de productos</h2><p>Agrega, edita o elimina productos sin modificar manualmente el catálogo.</p></div>
+      <div class="manager-top-actions"><button class="manager-btn primary" id="newProductManagerBtn">＋ Nuevo</button><button class="manager-btn secondary" id="backToShopBtn">← Volver a la tienda</button></div>
+    </div>
+    <div class="manager-shell">
+      <div class="manager-list">
+        <div class="manager-list-search"><input id="managerSearch" placeholder="Buscar producto para editar..."></div>
+        <div class="manager-items" id="managerItems"></div>
+      </div>
+      <div>
+        <div class="manager-form-card">
+          <div class="manager-form-header"><h3 id="managerFormTitle">Nuevo producto</h3><span class="manager-state" id="managerState">Sin guardar</span></div>
+          <div class="sync-indicator"><span class="sync-dot" id="syncDot"></span><span id="syncText">Catálogo guardado localmente en este navegador</span></div>
+          <form id="productForm" novalidate>
+            <div class="form-grid">
+              <div class="field"><label for="productId">ID</label><input id="productId" type="number" min="1" step="1" readonly><small>Se genera automáticamente al crear un producto.</small></div>
+              <div class="field"><label for="productName">Nombre *</label><input id="productName" required maxlength="140" placeholder="Nombre del producto"></div>
+              <div class="field"><label for="productCategory">Categoría *</label><input id="productCategory" required maxlength="80" placeholder="Ej. Papas"></div>
+              <div class="field"><label for="productUnits">Unidades / gramos *</label><input id="productUnits" type="number" min="0" step="1" required inputmode="numeric" placeholder="70"></div>
+              <div class="field"><label for="productPrice">Precio (USD) *</label><input id="productPrice" type="number" min="0" step="0.01" required inputmode="decimal" placeholder="2.80"></div>
+              <div class="field"><label for="productImage">Imagen (URL) *</label><input id="productImage" type="url" required placeholder="https://..."><small>También puedes usar una URL de imagen local/absoluta.</small></div>
+              <div class="field full"><label>Etiquetas *</label><div class="tag-editor-row"><input id="tagInput" placeholder="Escribe una etiqueta y pulsa Enter"><button class="manager-btn secondary" type="button" id="addTagBtn">Agregar</button></div><div class="tag-chips" id="tagChips"></div></div>
+              <div class="field"><label for="productPedidos">Pedidos</label><input id="productPedidos" type="number" min="0" step="1" value="0"></div>
+              <div class="field"><label for="productRating">Rating</label><input id="productRating" type="number" min="0" max="5" step="0.1" value="0"></div>
+            </div>
+            <div class="image-preview" id="imagePreview"><span style="color:#888;font-size:.8rem">Vista previa de la imagen</span></div>
+            <div class="manager-form-actions"><button class="manager-btn secondary" type="button" id="cancelProductBtn">Cancelar</button><button class="manager-btn danger" type="button" id="deleteProductBtn" disabled>Eliminar</button><button class="manager-btn primary" type="submit" id="saveProductBtn">Guardar producto</button></div>
+            <div class="manager-status" id="managerStatus" aria-live="polite"></div>
+          </form>
+        </div>
+        <div class="manager-help"><strong>Sincronización:</strong> el catálogo se lee desde <code>data/productos.json</code>. Una vez conectada tu GitHub App, cada alta, edición, eliminación o importación publica automáticamente el JSON mediante la API de GitHub. La conexión se conserva en este dispositivo mediante el token de usuario y su refresh token; no se guarda ningún secreto de GitHub en el repositorio.</div>
+        <div class="github-panel" id="githubPanel">
+          <div class="github-panel-main">
+            <div class="github-status-line"><span class="sync-dot" id="githubSyncDot"></span><div><strong id="githubSyncTitle">GitHub no conectado</strong><small id="githubSyncText">Conecta GitHub una sola vez para publicar cambios automáticamente.</small></div></div>
+            <div class="github-actions"><button class="manager-btn primary" id="githubConnectBtn" type="button">🐙 Conectar GitHub</button><button class="manager-btn secondary" id="githubSyncBtn" type="button" disabled>↻ Sincronizar ahora</button><button class="manager-btn secondary" id="githubDisconnectBtn" type="button" style="display:none">Desconectar</button><button class="manager-btn secondary" id="importJsonBtn" type="button">⇧ Importar JSON</button><input id="importJsonInput" type="file" accept="application/json,.json" hidden></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<button type="button" class="floating-rate-btn" id="floatingRateBtn"><span class="floating-label">Tasa del día</span><span class="floating-value" id="floatingRateValue">293 VES</span></button>
+<div class="image-modal" id="imageModal"><img id="modalImage" src="" alt="Vista ampliada"></div>
+<div class="rate-modal" id="rateModal" role="dialog" aria-modal="true"><div class="rate-modal-card"><h3>💱 Editar tasa del día</h3><p>Actualiza rápidamente la tasa utilizada para convertir los totales del carrito de USD a VES.</p><input type="number" id="rateModalInput" min="0.0001" step="0.01"><div class="rate-modal-actions"><button class="rate-cancel" id="rateModalCancel">Cancelar</button><button class="rate-save" id="rateModalSave">Guardar tasa</button></div></div></div>
+<div class="github-modal" id="githubModal" role="dialog" aria-modal="true" aria-labelledby="githubModalTitle">
+  <div class="github-modal-card">
+    <div class="github-modal-header"><div><h3 id="githubModalTitle">🐙 Conectar GitHub</h3><p>Autoriza esta tienda para leer y actualizar el repositorio configurado en el Worker.</p></div><button type="button" class="github-modal-close" id="githubModalClose">✕</button></div>
+    <div class="github-auth-box" id="githubAuthBox">
+      <p id="githubAuthMessage">La conexión abrirá GitHub para autorizar la aplicación y volverá automáticamente a la tienda.</p>
+      <div class="github-progress" id="githubProgress" hidden><span class="github-spinner"></span><span id="githubProgressText">Abriendo GitHub para autorizar…</span></div>
+    </div>
+    <div class="github-modal-actions"><button type="button" class="manager-btn secondary" id="githubCancelBtn">Cancelar</button><button type="button" class="manager-btn primary" id="githubAuthorizeBtn">Autorizar con GitHub</button></div>
+    <div class="github-security-note">La autenticación utiliza OAuth + PKCE mediante el Cloudflare Worker. El Client Secret y los tokens de GitHub no se almacenan en este HTML.</div>
+  </div>
+</div>
+<div class="manager-confirm" id="confirmModal"><div class="confirm-card"><h3 id="confirmTitle">Confirmar</h3><p id="confirmText"></p><div class="confirm-actions" style="display:flex;gap:.5rem"><button class="confirm-cancel" id="confirmCancel">Cancelar</button><button class="confirm-danger" id="confirmOk">Confirmar</button></div></div></div>
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
