@@ -344,18 +344,5 @@
     "precio": 1,
     "pedidos": 0,
     "rating": 0
-  },
-  {
-    "id": 27,
-    "nombre": "Doritos",
-    "categoria": "Snacks",
-    "etiquetas": [
-      "queso"
-    ],
-    "imagen": "https://lh3.googleusercontent.com/jKTxs3WNAi6mJ2Esr3NB1lHoxJY-nHMM-Nq-FeX-j0fQQGhf907xdGxfZgX2oXQOcuj6B-N_TPs6nZmL26UIojvDZfBBUTRSgdQWyGvLUnkwfTxwjQ",
-    "unidades": 45,
-    "precio": 1.5,
-    "pedidos": 0,
-    "rating": 0
   }
 ]
